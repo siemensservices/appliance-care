@@ -9,7 +9,7 @@ const Hero = () => {
           {/* Working Hours Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6 animate-fade-in">
             <Clock className="w-4 h-4" />
-            <span className="text-sm font-medium">Working Time: 8 AM – 10 PM</span>
+            <span className="text-sm font-medium">Working Time: 24x7</span>
           </div>
 
           {/* Main Heading */}
