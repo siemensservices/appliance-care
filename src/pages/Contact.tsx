@@ -230,10 +230,6 @@ const Contact = () => {
     </SelectContent>
   </Select>
 </div>
-
-)}
-
-
                 <Button 
                   type="submit" 
                   size="lg" 
