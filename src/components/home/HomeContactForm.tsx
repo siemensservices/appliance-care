@@ -78,40 +78,7 @@ const HomeContactForm = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 items-start">
-            {/* Contact Info */}
-            <div className="bg-primary rounded-2xl p-6 md:p-8 text-primary-foreground">
-
-              <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
-              <p className="text-primary-foreground/80 mb-6">
-                Need urgent help? Call us directly for immediate assistance.
-              </p>
-              
-              <div className="space-y-4 mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary-foreground/20 flex items-center justify-center">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-primary-foreground/70">Phone</p>
-                    <a href="tel:7710074028" className="font-semibold hover:underline">7710074028</a>
-                  </div>
-                </div>
-              </div>
-
-              <a href="tel:7710074028">
-                <Button variant="secondary" size="lg" className="w-full gap-2">
-                  <Phone className="w-5 h-5" />
-                  Call Now
-                </Button>
-              </a>
-
-              <div className="mt-6 pt-6 border-t border-primary-foreground/20">
-                <p className="text-sm text-primary-foreground/70">
-                  Available 24×7 for all your washing machine repair needs
-                </p>
-              </div>
-            </div>
+          
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="bg-background rounded-2xl border border-border p-6 space-y-4">
