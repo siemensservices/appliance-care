@@ -12,12 +12,12 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="inline-block">
-              <span className="text-xl font-bold text-foreground">
-                Washing<span className="text-primary">Expert</span>
+              <span className="text-xl font-bold text-primary">
+                SIEMENS
               </span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Professional washing machine repair and service. Expert technicians available 8 AM – 10 PM.
+              Professional washing machine repair and service. Expert technicians available 24×7.
             </p>
           </div>
 
@@ -78,9 +78,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="mailto:myblue@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="mailto:rimshashaikh06@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                   <Mail className="w-4 h-4" />
-                  myblue@gmail.com
+                  rimshashaikh06@gmail.com
                 </a>
               </li>
             </ul>
@@ -97,7 +97,7 @@ const Footer = () => {
 
         <div className="mt-8 pt-8 border-t border-border text-center">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} WashingExpert. All rights reserved.
+            © {currentYear} SIEMENS. All rights reserved.
           </p>
         </div>
       </div>

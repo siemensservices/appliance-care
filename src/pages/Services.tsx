@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Phone, Droplets, Thermometer, Wind, Zap, Shirt, CheckCircle2 } from "lucide-react";
+import { Phone, Droplets, Thermometer, Wind, Zap, CheckCircle2 } from "lucide-react";
 
 const washingMachineServices = [
   {
@@ -59,12 +59,6 @@ const otherServices = [
     title: "Microwave Repair",
     description: "Quick microwave oven repair for all types - solo, grill, and convection microwaves.",
     issues: ["Not heating food", "Sparking inside", "Turntable not rotating", "Display not working", "Buttons unresponsive"],
-  },
-  {
-    icon: Shirt,
-    title: "Dryer Repair",
-    description: "Professional dryer repair service for vented, condenser, and heat pump dryers.",
-    issues: ["Not drying clothes", "Not turning on", "Overheating", "Making squeaking noises", "Taking too long to dry"],
   },
 ];
 
@@ -172,7 +166,7 @@ const Services = () => {
             Need Emergency Repair?
           </h2>
           <p className="text-primary-foreground/90 mb-6">
-            Our technicians are available 7 days a week. Get same-day service!
+            Our technicians are available 24×7. Get same-day service!
           </p>
           <a href="tel:7710074028">
             <Button variant="secondary" size="lg" className="gap-2">

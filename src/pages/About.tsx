@@ -53,7 +53,7 @@ const About = () => {
               Who We Are?
             </h1>
             <p className="text-muted-foreground text-lg mb-4">
-              At WashingExpert, we are dedicated to providing top-notch repair and service for all kinds of washing machines. Our team of skilled technicians is available round the clock to address any issues you may have with your washing machine.
+              At SIEMENS, we are dedicated to providing top-notch repair and service for all kinds of washing machines. Our team of skilled technicians is available round the clock to address any issues you may have with your washing machine.
             </p>
             <p className="text-muted-foreground">
               We understand how essential a functioning washing machine is for your daily routine, which is why we strive to offer fast and reliable services to get your appliance back up and running smoothly. Whether it's a minor repair or a major issue, our experts have the knowledge and expertise to handle it all.
@@ -70,7 +70,7 @@ const About = () => {
               Our services include but are not limited to fixing leaks, replacing damaged parts, addressing drainage problems, resolving electrical issues, and ensuring optimal performance of your washing machine. We use quality spare parts and advanced tools to ensure long-lasting results.
             </p>
             <p className="text-muted-foreground">
-              Customer satisfaction is our top priority, and we go above and beyond to provide exceptional service that exceeds expectations. With our availability, you can rely on us anytime you encounter an issue with your washing machine. Don't let a malfunctioning appliance disrupt your daily life – contact WashingExpert for prompt and efficient repair solutions.
+              Customer satisfaction is our top priority, and we go above and beyond to provide exceptional service that exceeds expectations. With our availability, you can rely on us anytime you encounter an issue with your washing machine. Don't let a malfunctioning appliance disrupt your daily life – contact SIEMENS for prompt and efficient repair solutions.
             </p>
           </div>
         </div>
