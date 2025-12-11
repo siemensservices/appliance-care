@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Thermometer, Wind, Zap, Shirt, ArrowRight } from "lucide-react";
+import { Thermometer, Wind, Zap, ArrowRight } from "lucide-react";
 
 const otherServices = [
   {
@@ -17,11 +17,6 @@ const otherServices = [
     title: "Microwave Repair",
     description: "Microwave not heating? Turntable not rotating? We can help.",
   },
-  {
-    icon: Shirt,
-    title: "Dryer Repair",
-    description: "Clothes not drying? Get your dryer fixed by our experts.",
-  },
 ];
 
 const OtherServices = () => {
@@ -37,7 +32,7 @@ const OtherServices = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {otherServices.map((service, index) => (
             <Link
               key={index}

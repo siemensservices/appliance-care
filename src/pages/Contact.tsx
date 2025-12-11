@@ -18,6 +18,13 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [machineType, setMachineType] = useState("");
+  const [serviceType, setServiceType] = useState("");
+  const [showOtherField, setShowOtherField] = useState(false);
+
+  const handleServiceTypeChange = (value: string) => {
+    setServiceType(value);
+    setShowOtherField(value === "Other (Please mention)");
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,6 +32,7 @@ const Contact = () => {
 
     const formData = new FormData(e.currentTarget);
     formData.append("machineType", machineType);
+    formData.append("serviceType", serviceType);
 
     try {
       const response = await fetch("https://formspree.io/f/mrbnykwv", {
@@ -42,6 +50,8 @@ const Contact = () => {
         });
         (e.target as HTMLFormElement).reset();
         setMachineType("");
+        setServiceType("");
+        setShowOtherField(false);
       } else {
         throw new Error("Failed to send");
       }
@@ -80,7 +90,7 @@ const Contact = () => {
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-6">Get in Touch</h2>
               <p className="text-muted-foreground mb-8">
-                Have a question or need to book a service? We're here to help you 7 days a week.
+                Have a question or need to book a service? We're here to help you 24×7.
               </p>
 
               <div className="space-y-6">
@@ -105,8 +115,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                    <a href="mailto:myblue@gmail.com" className="text-primary font-medium hover:underline">
-                      myblue@gmail.com
+                    <a href="mailto:rimshashaikh06@gmail.com" className="text-primary font-medium hover:underline">
+                      rimshashaikh06@gmail.com
                     </a>
                     <p className="text-sm text-muted-foreground mt-1">
                       We respond within 24 hours
@@ -120,9 +130,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Working Hours</h3>
-                    <p className="text-foreground font-medium">8:00 AM - 10:00 PM</p>
+                    <p className="text-foreground font-medium">24×7 Available</p>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Monday to Sunday • Same-day service
+                      Always available • Same-day service
                     </p>
                   </div>
                 </div>
@@ -190,9 +200,7 @@ const Contact = () => {
                   />
                 </div>
 
-              
-
-    <div className="space-y-2">
+                <div className="space-y-2">
                   <Label htmlFor="machineType">Machine Type <span className="text-destructive">*</span></Label>
                   <Select value={machineType} onValueChange={setMachineType} required>
                     <SelectTrigger className="h-12">
@@ -208,6 +216,35 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
+                  <Label htmlFor="serviceType">Service Type <span className="text-destructive">*</span></Label>
+                  <Select value={serviceType} onValueChange={handleServiceTypeChange} required>
+                    <SelectTrigger className="h-12">
+                      <SelectValue placeholder="Select service type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Installation & Uninstallation">Installation & Uninstallation</SelectItem>
+                      <SelectItem value="Removal">Removal</SelectItem>
+                      <SelectItem value="Repair">Repair</SelectItem>
+                      <SelectItem value="Service">Service</SelectItem>
+                      <SelectItem value="Other (Please mention)">Other (Please mention)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {showOtherField && (
+                  <div className="space-y-2 animate-fade-in">
+                    <Label htmlFor="otherDescription">Please specify your description <span className="text-destructive">*</span></Label>
+                    <Textarea
+                      id="otherDescription"
+                      name="otherDescription"
+                      placeholder="Please describe your service requirement..."
+                      required
+                      className="min-h-[100px] resize-none"
+                    />
+                  </div>
+                )}
+
+                <div className="space-y-2">
                   <Label htmlFor="issue">Issue Description <span className="text-destructive">*</span></Label>
                   <Textarea
                     id="issue"
@@ -217,11 +254,12 @@ const Contact = () => {
                     className="min-h-[120px] resize-none"
                   />
                 </div>
+
                 <Button 
                   type="submit" 
                   size="lg" 
                   className="w-full gap-2 h-12"
-                  disabled={isSubmitting || !machineType}
+                  disabled={isSubmitting || !machineType || !serviceType}
                 >
                   {isSubmitting ? (
                     "Sending..."

@@ -5,7 +5,7 @@ const FloatingButtons = () => {
   const phoneNumber = "7710074028";
 
   return (
-    <div className="fixed right-4 bottom-24 z-40 flex flex-col gap-3">
+    <div className="fixed left-4 bottom-24 z-40 flex flex-col gap-3">
       {/* WhatsApp Button */}
       <a
         href={`https://wa.me/${whatsappNumber}`}
