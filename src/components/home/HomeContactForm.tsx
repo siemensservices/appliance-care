@@ -77,7 +77,9 @@ const HomeContactForm = () => {
               Fill out the form below and our team will get back to you within 24 hours
             </p>
           </div>
-
+<div className="grid md:grid-cols-2 gap-8 items-start">
+            {/* Contact Info */}
+      
           
 
             {/* Form */}
