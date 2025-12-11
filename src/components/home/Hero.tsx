@@ -11,11 +11,15 @@ const heroImages = [heroSlide1, heroSlide2, heroSlide3, heroSlide4];
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const sliderRef = useRef(null);
   const intervalRef = useRef(null);
+  const startXRef = useRef(0);
+  const isDraggingRef = useRef(false);
+  const prevTranslateRef = useRef(0);
+  const [paused, setPaused] = useState(false);
 
   // -----------------------------
-  // Auto Slide Logic (Fixed)
+  // Auto-slide with pause handling
   // -----------------------------
   useEffect(() => {
     if (!paused) {
@@ -27,15 +31,65 @@ const Hero = () => {
     return () => clearInterval(intervalRef.current);
   }, [paused]);
 
-  // Pause on hover/touch
-  const handlePause = () => {
-    setPaused(true);
-    clearInterval(intervalRef.current);
-  };
+  // -----------------------------
+  // Swipe / Drag Logic
+  // -----------------------------
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
 
-  const handleResume = () => {
-    setPaused(false);
-  };
+    const handleTouchStart = (e) => {
+      clearInterval(intervalRef.current);
+      setPaused(true);
+
+      startXRef.current = e.touches[0].clientX;
+      isDraggingRef.current = true;
+      prevTranslateRef.current = -currentSlide * window.innerWidth;
+    };
+
+    const handleTouchMove = (e) => {
+      if (!isDraggingRef.current) return;
+      const diff = e.touches[0].clientX - startXRef.current;
+      const currentTranslate = prevTranslateRef.current + diff;
+      slider.style.transform = `translateX(${currentTranslate}px)`;
+    };
+
+    const handleTouchEnd = () => {
+      if (!isDraggingRef.current) return;
+      isDraggingRef.current = false;
+
+      const sliderWidth = window.innerWidth;
+      const currentTranslate = parseFloat(slider.style.transform.replace("translateX(", "").replace("px)", ""));
+      const moved = currentTranslate - prevTranslateRef.current;
+
+      if (moved < -50) {
+        setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+      } else if (moved > 50) {
+        setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+      } else {
+        slider.style.transform = `translateX(${-currentSlide * sliderWidth}px)`;
+      }
+
+      // Resume auto-slide after release
+      setTimeout(() => setPaused(false), 500);
+    };
+
+    slider.addEventListener("touchstart", handleTouchStart);
+    slider.addEventListener("touchmove", handleTouchMove);
+    slider.addEventListener("touchend", handleTouchEnd);
+
+    return () => {
+      slider.removeEventListener("touchstart", handleTouchStart);
+      slider.removeEventListener("touchmove", handleTouchMove);
+      slider.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [currentSlide]);
+
+  // -----------------------------
+  // Pause on hover (desktop)
+  // -----------------------------
+  const handleMouseEnter = () => setPaused(true);
+  const handleMouseLeave = () => setPaused(false);
 
   return (
     <section className="py-8 md:py-16 bg-gradient-to-b from-muted/50 to-background">
@@ -81,16 +135,13 @@ const Hero = () => {
           <div className="order-1 lg:order-2 flex justify-center">
             <div
               className="relative w-full max-w-md lg:max-w-lg overflow-hidden rounded-2xl shadow-lg"
-              onMouseEnter={handlePause}
-              onMouseLeave={handleResume}
-              onTouchStart={handlePause}
-              onTouchEnd={handleResume}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               <div
+                ref={sliderRef}
                 className="flex transition-transform duration-700 ease-in-out"
-                style={{
-                  transform: `translateX(-${currentSlide * 100}%)`,
-                }}
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {heroImages.map((image, index) => (
                   <img
@@ -102,7 +153,7 @@ const Hero = () => {
                 ))}
               </div>
 
-              {/* INDICATORS */}
+              {/* DOT INDICATORS */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                 {heroImages.map((_, index) => (
                   <button
@@ -118,6 +169,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
