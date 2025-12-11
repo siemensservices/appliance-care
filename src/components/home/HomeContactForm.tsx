@@ -80,7 +80,7 @@ const HomeContactForm = () => {
 
           <div className="grid md:grid-cols-2 gap-8 items-start">
             {/* Contact Info */}
-            <div className="bg-primary rounded-2xl p-6 md:p-8 text-primary-foreground">
+            <div className="bg-white rounded-2xl p-6 md:p-8 text-black">
               <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
               <p className="text-primary-foreground/80 mb-6">
                 Need urgent help? Call us directly for immediate assistance.
