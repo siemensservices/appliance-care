@@ -115,8 +115,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                    <a href="mailto:rimshashaikh06@gmail.com" className="text-primary font-medium hover:underline">
-                      rimshashaikh06@gmail.com
+                    <a href="mailto:siemensservices.in@gmail.com" className="text-primary font-medium hover:underline">
+                      siemensservices.in@gmail.com
                     </a>
                     <p className="text-sm text-muted-foreground mt-1">
                       We respond within 24 hours
